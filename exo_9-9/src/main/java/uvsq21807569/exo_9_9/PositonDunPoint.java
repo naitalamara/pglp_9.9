@@ -36,4 +36,7 @@ public class PositonDunPoint {
 			return false ;
 	}
 
+	public  PositonDunPoint dupliquer() {
+		return new  PositonDunPoint(this.x,this.y);
+	}
 }
