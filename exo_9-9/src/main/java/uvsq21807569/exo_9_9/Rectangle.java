@@ -5,7 +5,7 @@ public class Rectangle extends Forme {
 	private final int largeur , longueur ;
 	private  PositonDunPoint  p ;
 	
-	public Rectangle(String nom,final int larg , final int longue ,PositonDunPoint  b) {
+	public Rectangle(String nom,PositonDunPoint  b, final int longue,final int larg ) {
 		super(nom);
 		this.largeur=larg ;
 		this.longueur=longue ;

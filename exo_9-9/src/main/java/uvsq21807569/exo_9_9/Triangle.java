@@ -24,8 +24,8 @@ public class Triangle extends Forme {
 		this.c.setX(this.c.getX()+dx);
 		
 		this.a.setY(this.a.getY()+dy);
-		this.b.setY(this.a.getY()+dy);
-		this.c.setY(this.a.getY()+dy);
+		this.b.setY(this.b.getY()+dy);
+		this.c.setY(this.c.getY()+dy);
 	}
 
 	public PositonDunPoint getA() {
