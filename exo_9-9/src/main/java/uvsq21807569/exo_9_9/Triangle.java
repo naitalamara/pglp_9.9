@@ -2,7 +2,7 @@ package uvsq21807569.exo_9_9;
 
 public class Triangle extends Forme {
 
-	 PositonDunPoint a ,b ,c ;
+	private  PositonDunPoint a ,b ,c ;
 	 
 	public Triangle(String nom,final  PositonDunPoint p1, final PositonDunPoint p2, final  PositonDunPoint p3) {
 		super(nom);

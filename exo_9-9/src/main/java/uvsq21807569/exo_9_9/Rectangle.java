@@ -1,22 +1,44 @@
 package uvsq21807569.exo_9_9;
 
 public class Rectangle extends Forme {
-
-	public Rectangle(String nom) {
+	
+	private final int largeur , longueur ;
+	private  PositonDunPoint  p ;
+	
+	public Rectangle(String nom,final int larg , final int longue ,PositonDunPoint  b) {
 		super(nom);
-		// TODO Auto-generated constructor stub
+		this.largeur=larg ;
+		this.longueur=longue ;
+		this.p=b.dupliquer();
+		
 	}
 
 	@Override
 	public void afficher() {
-		// TODO Auto-generated method stub
+		System.out.println("Rectangle de largeur=" + largeur + ", et de longueur=" + longueur + ",et position du point  p=" + p + "");
 		
 	}
 
 	@Override
 	public void deplacer(String nom, int dx, int dy) {
-		// TODO Auto-generated method stub
+		p.setX(p.getX()+dx);
+		p.setY(p.getY()+dy);
 		
 	}
 
+	public int getLargeur() {
+		return largeur;
+	}
+
+	public int getLongueur() {
+		return longueur;
+	}
+
+	public PositonDunPoint getP() {
+		return p;
+	}
+
+	
+
+	
 }

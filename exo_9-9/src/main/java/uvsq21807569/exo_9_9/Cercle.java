@@ -2,8 +2,8 @@ package uvsq21807569.exo_9_9;
 
 public class Cercle extends Forme {
 
-	PositonDunPoint centre ;
-	final int rayon ;
+	private PositonDunPoint centre ;
+	private final int rayon ;
 	
 	public Cercle(String nom,final PositonDunPoint p,final int r) {
 		super(nom);

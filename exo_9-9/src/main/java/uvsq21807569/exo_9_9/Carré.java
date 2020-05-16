@@ -2,8 +2,8 @@ package uvsq21807569.exo_9_9;
 
 public class Carré extends Forme {
 
-	 PositonDunPoint  p ;
-	 final int longueur ;
+	private  PositonDunPoint  p ;
+	private  final int longueur ;
 	 
 	public Carré(String nom,final  PositonDunPoint  a,final int longu) {
 		super(nom);
@@ -32,10 +32,6 @@ public class Carré extends Forme {
 		return longueur;
 	}
 
-	@Override
-	public String toString() {
-		return "Carré [p=" + p + ", longueur=" + longueur + "]";
-	}
-
+	
 	
 }
