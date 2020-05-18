@@ -6,21 +6,19 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
-
-public class CercleJdbc implements DAO<Cercle> {
+public class CarreJdbc implements DAO<Carré>{
 	private static String url =DerbyBd.url;
 	@Override
-	public Cercle create(Cercle obj) {
+	public Carré create(Carré obj) {
 		try (Connection con = DriverManager.getConnection(url)) {
-			PreparedStatement pre = con.prepareStatement("INSERT INTO cercle (nom, centre_x, centre_y,rayon)" +
+			PreparedStatement pre = con.prepareStatement("INSERT INTO carre (nom, point_x, point_y,longueur)" +
 		"VALUES (?, ?, ?, ?)");
 
 			pre.setString(1, obj.getNom());
-			pre.setInt(2, obj.getCentre().getX());
-			pre.setInt(3, obj.getCentre().getY());
-			pre.setInt(4, obj.getRayon());
-			System.out.println("Création du cercle   :" + obj.getNom());
+			pre.setInt(2, obj.getP().getX());
+			pre.setInt(3, obj.getP().getY());
+			pre.setInt(4, obj.getLongueur());
+			System.out.println("Création du carre   :" + obj.getNom());
 			int res = pre.executeUpdate();
 			assert res== 1; 
 					}catch (SQLException e) {
@@ -28,26 +26,24 @@ public class CercleJdbc implements DAO<Cercle> {
 					}
 		return obj;
 		}
-	
-
 	@Override
-	public Cercle read(String id) {
-		Cercle a = null;
+	public Carré read(String id) {
+		Carré a = null;
 		try (Connection con = DriverManager.getConnection(url)) {
 			System.out.println("Recherche " + id);
 			PreparedStatement pre = con.prepareStatement(
-					"SELECT * FROM cercle WHERE nom = ?");
+					"SELECT * FROM carre WHERE nom = ?");
 			pre.setString(1, id);
 			ResultSet res = pre.executeQuery();
 			if(res.next()) {
-				a = new Cercle (
+				a = new Carré (
 						res.getString("nom"),
-					new PositonDunPoint(res.getInt("centre_x"),
-						res.getInt("centre_y")),res.getInt("rayon"));
+					new PositonDunPoint(res.getInt("point_x"),
+						res.getInt("point_y")),res.getInt("longueur"));
 						res.close();
 
 			}else {
-			System.out.println("le cercle que vous chercher n'existe pas ");
+			System.out.println("le carre que vous chercher n'existe pas ");
 			}
 			}
 		catch (SQLException e) {
@@ -58,22 +54,22 @@ public class CercleJdbc implements DAO<Cercle> {
 	
 
 	@Override
-	public Cercle update(Cercle obj) {
+	public Carré update(Carré obj) {
 		try (Connection con = DriverManager.getConnection(url)) {
 			PreparedStatement statmnt = con.prepareStatement(
-					"SELECT * FROM cercle WHERE nom = ?  ");
+					"SELECT * FROM carre WHERE nom = ?  ");
 			statmnt.setString(1, obj.getNom());
 			ResultSet resu = statmnt.executeQuery();
 			if(!resu.next()) { 
-				System.out.println("mise a jours impossible car cercle que vous voulez metre a jours n'existe pas");
+				System.out.println("mise a jours impossible car le carre que vous voulez metre a jours n'existe pas");
 			}else {
 			 PreparedStatement pre = con.prepareStatement(
-					"UPDATE cercle SET centre_x = ?, "
-							+ "centre_y = ?, "
-							+ "rayon = ? WHERE nom = ?");
-			pre.setInt(1, obj.getCentre().getX());
-			pre.setInt(2, obj.getCentre().getY());
-			pre.setInt(3, obj.getRayon());
+					"UPDATE carre SET point_x = ?, "
+							+ "point_y = ?, "
+							+ "longueur = ? WHERE nom = ?");
+			pre.setInt(1, obj.getP().getX());
+			pre.setInt(2, obj.getP().getY());
+			pre.setInt(3, obj.getLongueur());
 			pre.setString(4, obj.getNom());
 			int res = pre.executeUpdate();
 			
@@ -86,20 +82,19 @@ public class CercleJdbc implements DAO<Cercle> {
 		System.out.println("modifications reussites " );
 		return obj;
 	}
-	
 
 	@Override
-	public void delete(Cercle obj) {
+	public void delete(Carré obj) {
 		try (Connection con = DriverManager.getConnection(url)) {
 			PreparedStatement statmnt = con.prepareStatement(
-					"SELECT * FROM cercle WHERE nom = ?  ");
+					"SELECT * FROM carre WHERE nom = ?  ");
 			statmnt.setString(1, obj.getNom());
 			ResultSet resu = statmnt.executeQuery();
 			if(!resu.next()) { 
-				System.out.println("suppression impossible car le cercle que vous voulez supprimer n'existe pas");
+				System.out.println("suppression impossible car le carre que vous voulez supprimer n'existe pas");
 			}else {
 			PreparedStatement stat = con.prepareStatement(
-					"DELETE FROM cercle "
+					"DELETE FROM carre "
 						+ "WHERE nom = ?");
 			stat.setString(1, obj.getNom());
 			int res = stat.executeUpdate();
