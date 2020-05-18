@@ -60,14 +60,56 @@ public class CercleJdbc implements DAO<Cercle> {
 
 	@Override
 	public Cercle update(Cercle obj) {
-		// TODO Auto-generated method stub
-		return null;
+		try (Connection con = DriverManager.getConnection(url)) {
+			PreparedStatement statmnt = con.prepareStatement(
+					"SELECT * FROM cercle WHERE nom = ?  ");
+			statmnt.setString(1, obj.getNom());
+			ResultSet resu = statmnt.executeQuery();
+			if(!resu.next()) { 
+				System.out.println("mise a jours impossible car cercle que vous voulez metre a jours n'existe pas");
+			}else {
+			 PreparedStatement pre = con.prepareStatement(
+					"UPDATE cercle SET centre_x = ?, "
+							+ "centre_y = ?, "
+							+ "rayon = ? WHERE nom = ?");
+			pre.setInt(1, obj.getCentre().getX());
+			pre.setInt(2, obj.getCentre().getY());
+			pre.setInt(3, obj.getRayon());
+			pre.setString(4, obj.getNom());
+			int res = pre.executeUpdate();
+			
+			assert res == 1;
+		}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		System.out.println("modifications reussites " );
+		return obj;
 	}
+	
 
 	@Override
 	public void delete(Cercle obj) {
-		// TODO Auto-generated method stub
-		
-	}
-
+		try (Connection con = DriverManager.getConnection(url)) {
+			PreparedStatement statmnt = con.prepareStatement(
+					"SELECT * FROM cercle WHERE nom = ?  ");
+			statmnt.setString(1, obj.getNom());
+			ResultSet resu = statmnt.executeQuery();
+			if(!resu.next()) { 
+				System.out.println("suppression impossible car le cercle que vous voulez supprimer n'existe pas");
+			}else {
+			PreparedStatement stat = con.prepareStatement(
+					"DELETE FROM cercle "
+						+ "WHERE nom = ?");
+			stat.setString(1, obj.getNom());
+			int res = stat.executeUpdate();
+			assert res == 1;
+			System.out.println("suprresion reussite ");
+		}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();	
+		}
+		}
 }
