@@ -1,20 +1,62 @@
 package uvsq21807569.exo_9_9;
 
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 
 
 public class CercleJdbc implements DAO<Cercle> {
-
+	private static String url =DerbyBd.url;
 	@Override
 	public Cercle create(Cercle obj) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		try (Connection con = DriverManager.getConnection(url)) {
+			PreparedStatement pre = con.prepareStatement("INSERT INTO cercle (nom, centre_x, centre_y,rayon)" +
+		"VALUES (?, ?, ?, ?)");
+
+			pre.setString(1, obj.getNom());
+			pre.setInt(2, obj.getCentre().getX());
+			pre.setInt(3, obj.getCentre().getY());
+			pre.setInt(4, obj.getRayon());
+			System.out.println("Création du cercle   :" + obj.getNom());
+			int res = pre.executeUpdate();
+			assert res== 1; 
+					}catch (SQLException e) {
+						e.getMessage();
+					}
+		return obj;
+		}
+	
 
 	@Override
 	public Cercle read(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		Cercle a = null;
+		try (Connection con = DriverManager.getConnection(url)) {
+			System.out.println("Recherche " + id);
+			PreparedStatement pre = con.prepareStatement(
+					"SELECT * FROM cercle WHERE nom = ?");
+			pre.setString(1, id);
+			ResultSet res = pre.executeQuery();
+			if(res.next()) {
+				a = new Cercle (
+						res.getString("nom"),
+					new PositonDunPoint(res.getInt("centre_x"),
+						res.getInt("centre_y")),res.getInt("rayon"));
+						res.close();
+
+			}else {
+			System.out.println("le cercle que vous chercher n'existe pas ");
+			}
+			}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return a;
 	}
+	
 
 	@Override
 	public Cercle update(Cercle obj) {
