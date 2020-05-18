@@ -1,6 +1,8 @@
 package uvsq21807569.exo_9_9;
 
-public abstract class Forme {
+import java.io.Serializable;
+
+public abstract class Forme implements Serializable {
 
 	private String nom ;
 
