@@ -1,6 +1,8 @@
 package uvsq21807569.exo_9_9;
 
-public class PositonDunPoint {
+import java.io.Serializable;
+
+public class PositonDunPoint implements Serializable {
 	int x, y ;
 
 	public PositonDunPoint(int x, int y) {
