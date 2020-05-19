@@ -1,19 +1,32 @@
 package uvsq21807569.exo_9_9;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 
 
 
 
 public class Groupe extends Forme {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ArrayList<Forme> listeForme ;
+	private UUID id;
 
 	public Groupe(String nom) {
 		super(nom);
 		listeForme=new ArrayList<Forme>();
+		id = UUID.randomUUID();
 		}
 
+	public Groupe(String nom,String id) {
+		super(nom);
+		listeForme=new ArrayList<Forme>();
+		this.id = UUID.fromString(id);
+		}
+	
 	
 	@Override
 	public void afficher() {
@@ -48,6 +61,9 @@ public class Groupe extends Forme {
 	
 	public ArrayList<Forme> retournerListforme(){
 		return this.listeForme;
+	}
+	public String getId() {
+		return id.toString();
 	}
 	
 }
