@@ -34,7 +34,7 @@ public class DerbyBd {
 		    DatabaseMetaData data = connect.getMetaData();
 		    ResultSet result = data.getTables(null, null, "CERCLE", null);
 		    if (result.next()){
-		    	throw new TableExisteDeja ("table  deja existante ");
+		    	throw new TableExisteDeja("table  deja existante ");
 		    	}else {
 		    		statement.addBatch(
 		    		"CREATE TABLE cercle("
@@ -100,7 +100,7 @@ public class DerbyBd {
 		    
 		   
 		    ResultSet resultat = data.getTables(null, null, "GROUPE", null);
-		    if (result.next()) {
+		    if (resultat.next()) {
 		    	throw new TableExisteDeja("table  deja existante ");
 		    } else {			
 
@@ -110,6 +110,7 @@ public class DerbyBd {
 		    
 		    
 		    ResultSet resus = data.getTables(null, null, "POSSEDE", null);
+		    
 		    if (resus.next()) {
 		    	throw new TableExisteDeja ("table deja existante ");
 		    } else {

@@ -12,7 +12,7 @@ public class RectangleJdbc implements DAO<Rectangle> {
 	public Rectangle create(Rectangle obj) {
 		try (Connection con = DriverManager.getConnection(url)) {
 			PreparedStatement pre = con.prepareStatement("INSERT INTO rectangle (nom, point_x, point_y,longueur,largeur)" +
-		"VALUES (?, ?, ?, ?)");
+		"VALUES (?, ?, ?, ?,?)");
 
 			pre.setString(1, obj.getNom());
 			pre.setInt(2, obj.getP().getX());
@@ -42,8 +42,9 @@ public class RectangleJdbc implements DAO<Rectangle> {
 						res.getString("nom"),
 					new PositonDunPoint(res.getInt("point_x"),
 						res.getInt("point_y")),res.getInt("longueur"),res.getInt("largeur"));
+			
 						res.close();
-
+						
 			}else {
 			System.out.println("le rectangle que vous chercher n'existe pas ");
 			}

@@ -4,24 +4,24 @@ package uvsq21807569.exo_9_9;
 
 public class DaoFactory {
 
-	public DAO<Carré> getCarreDAO() {
+	public static DAO<Carré> getCarreDAO() {
 		return new CarreJdbc( ) ;
 	}
 	
 	
 	
-	public DAO<Triangle> getTriangleDAO() {
+	public static DAO<Triangle> getTriangleDAO() {
 		return new TriangleJdbc( ) ;
 	}
 	
-	public DAO<Cercle> getCercleDAO() {
+	public static  DAO<Cercle> getCercleDAO() {
 		return new CercleJdbc( ) ;
 	}
 	
-	public DAO<Rectangle> getRectangleDAO() {
+	public static  DAO<Rectangle> getRectangleDAO() {
 		return new RectangleJdbc( ) ;
 	}
-	public DAO<Groupe> getGroupeDAO() {
+	public static  DAO<Groupe> getGroupeDAO() {
 		return new GroupeJdbc( ) ;
 	}
 }

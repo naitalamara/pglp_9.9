@@ -8,25 +8,49 @@ import java.sql.SQLException;
 
 public class TriangleJdbc  implements DAO<Triangle>  {
 	private static String url =DerbyBd.url;
+	
+	
 	@Override
+	
 	public Triangle create(Triangle obj) {
 		try (Connection con = DriverManager.getConnection(url)) {
-			PreparedStatement pre = con.prepareStatement("INSERT INTO triangle (nom, point1_x, point1_y, point2_x, point2_y,point3_x, point3_y)" +
-		"VALUES (?, ?, ?, ? , ?, ?, ?)");
+			
+					PreparedStatement prepare = con
 
-			pre.setString(1, obj.getNom());
-			pre.setInt(2, obj.getA().getX());
-			pre.setInt(3, obj.getA().getY());
-			pre.setInt(4, obj.getB().getX());
-			pre.setInt(5, obj.getB().getY());
-			pre.setInt(4, obj.getC().getX());
-			pre.setInt(5, obj.getC().getY());
+					.prepareStatement("INSERT  INTO Triangle "
+
+			+ "(nom, point1_x, point1_y, "
+
+			+ "point2_x, point2_y, point3_x, point3_y)"
+
+			+ "VALUES (?, ?, ?, ?, ?, ?, ?)");
+
+			prepare.setString(1, obj.getNom());
+
+			prepare.setInt(2, obj.getA().getX());
+
+			prepare.setInt(3, obj.getA().getY());
+
+			prepare.setInt(4, obj.getB().getX());
+
+			prepare.setInt(5, obj.getB().getY());
+
+			prepare.setInt(6, obj.getC().getX());
+
+			prepare.setInt(7, obj.getC().getY());
 			System.out.println("Création du triangle   :" + obj.getNom());
-			int res = pre.executeUpdate();
-			assert res== 1; 
-					}catch (SQLException e) {
-						e.getMessage();
-					}
+			int result = prepare.executeUpdate();
+			System.out.println(result);
+			assert result == 1;
+			
+			
+		} catch (SQLException e) {
+
+			e.getMessage();
+			
+
+		}
+
 		return obj;
 		}
 	
@@ -46,8 +70,9 @@ public class TriangleJdbc  implements DAO<Triangle>  {
 					new PositonDunPoint(res.getInt("point1_x"),res.getInt("point1_y")),
 					new PositonDunPoint(res.getInt("point2_x"),res.getInt("point2_y")),
 					new PositonDunPoint(res.getInt("point3_x"),res.getInt("point3_y")));
-						res.close();
-
+				
+				res.close();
+						
 			}else {
 			System.out.println("le triangle que vous chercher n'existe pas ");
 			}

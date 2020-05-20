@@ -27,6 +27,13 @@ public class Groupe extends Forme {
 		this.id = UUID.fromString(id);
 		}
 	
+	public Groupe(String nom,final ArrayList<Forme> liste) {
+		super(nom);
+		this.listeForme=liste;
+		this.id = UUID.randomUUID();;
+		}
+	
+	
 	
 	@Override
 	public void afficher() {
