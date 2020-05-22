@@ -16,7 +16,7 @@ public class DaoTest {
 	Triangle triangle ;
 	Carré carre ;
 	Cercle cercle ;
-	Rectangle rectangle ;
+	Rectangle rectangle ,rec;
 	Groupe grp ;
 	
 	
@@ -26,6 +26,7 @@ public class DaoTest {
 		triangle=new Triangle("triangle",new PositonDunPoint(0,0),new PositonDunPoint(-2,2),new PositonDunPoint(2,2));
 		carre=new Carré("carre",new PositonDunPoint(3,3),5);
 		rectangle =new Rectangle("rectangle",new PositonDunPoint(3,1),4,1);
+		rec =new Rectangle("rec",new PositonDunPoint(5,1),9,2);
 		grp=new Groupe("grp");
 		grp.ajouterforme(cercle);
 		grp.ajouterforme(triangle);
@@ -81,6 +82,11 @@ public class DaoTest {
 		assertEquals(rectangle2.getLargeur(),rectangle.getLargeur());
 		assertEquals(rectangle2.getLongueur(),rectangle.getLongueur());
 		assertEquals(rectangle2.getP(),rectangle.getP());
+		rectangle2=daorec.update(rec);
+		assertEquals(rectangle2.getNom(),rec.getNom());
+		assertEquals(rectangle2.getLargeur(),rec.getLargeur());
+		assertEquals(rectangle2.getLongueur(),rec.getLongueur());
+		assertEquals(rectangle2.getP(),rec.getP());
 		
 	}
 	
