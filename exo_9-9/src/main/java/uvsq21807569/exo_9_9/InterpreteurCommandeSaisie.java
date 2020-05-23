@@ -38,12 +38,30 @@ public class InterpreteurCommandeSaisie {
 			System.out.println("erreur lors de la saisie de la commande pour la creation d'un triangle ");
 		}
 			if (f != null ) return f; }
-		return f;
+		
+	else if(nombre ==2) {
+		String[] msg =position.split("[, ( ) ]" );
+	     if (msg.length==6) {
+	    	 try {
+	    		f= new Carré(nomForme,new PositonDunPoint(Integer.parseInt(msg[2]),Integer.parseInt(msg[3])),
+	    				 Integer.parseInt(msg[5])	);
+	    	 }catch(Exception e ) {
+					e.getMessage();
+				}
+	     }else {
+				System.out.println("erreur lors de la saisie de la commande pour la creation d'un carré ");
+			}
+		
+		
+		
+	
 		
 	}
+		return f;
 	
 	
 
+}
 }
 
 

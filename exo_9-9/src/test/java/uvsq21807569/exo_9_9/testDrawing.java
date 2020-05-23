@@ -10,14 +10,16 @@ public class testDrawing {
 	
 	String ca =  "Ce1 = cercle((1,1),3)" ;
 	String cmd2 ="Ce2 = cercle((4,6),90)" ;
+	
 	Forme cer =null ;
 	Cercle c2, c3 ; 
 	Triangle tr1 ;
 	Forme cer2 = null ;
-	
+	Carré car ;
 	
 	
 	String cmd3= "trr=triangle((2,2),(0,0),(7,5))";
+	String cmd4 = "Carr=carre((3,5),9)";
 	
 	
 	@Test
@@ -54,7 +56,20 @@ public class testDrawing {
 		
 		
 	}
-
+	@Test
+	public void testCreationCarré() {
+		System.out.println("********test creation d Carree*****************");
+		DrawingTUI c =new DrawingTUI()  ;
+		cer =(Forme) c.nextCommand(cmd4);
+		DAO<Carré> daoc =DaoFactory.getCarreDAO();
+		car=daoc.read("Carr");
+		assertEquals(car.getLongueur() , 9);
+		assertEquals(car.getP().getX() , 3);
+		assertEquals(car.getP().getY() , 5);
+		
+		
+		
+	}
 	
 
 	

@@ -20,34 +20,35 @@ public class DrawingTUI {
 		if(contenucmd.length !=2) {
 			System.out.println("erreur de la saisie commande ");
 		}
+		
+		
 		if(contenucmd[1].contains("cercle") ) {
-			position=contenucmd[1].split("cercle");
+				position=contenucmd[1].split("cercle");
 			
-			if(position.length != 0) {
+				if(position.length != 0) {
 				
 				Cercle ca ;
-			ca=  (Cercle) c.creation(position[1], contenucmd[0], 0);
+				ca=  (Cercle) c.creation(position[1], contenucmd[0], 0);
 			
-			forme = ca ;
-			}
+				forme = ca ;
+				}
 			
 		}else if(contenucmd[1].contains("triangle") ) {
-			position=contenucmd[1].split("triangle");
-			if(position.length != 0) {
+				position=contenucmd[1].split("triangle");
+				if(position.length != 0) {
 				Triangle ca ;
 				
-			ca=(Triangle) c.creation(position[1], contenucmd[0], 1);
-			forme = ca ;
-			}
-
-			
-			
-			
-			
-			
-			
-			
-			}
+				ca=(Triangle) c.creation(position[1], contenucmd[0], 1);
+				forme = ca ;}
+		}else if(contenucmd[1].contains("carre") ) {
+				position=contenucmd[1].split("carre");
+				
+				if(position.length != 0) {
+					Carré ca ;
+					ca=(Carré) c.creation(position[1], contenucmd[0], 2);
+					forme=ca ;
+				}
+				}
 		
 		if(forme != null ) {
 			
@@ -60,12 +61,14 @@ public class DrawingTUI {
 	}
 		
 		
-		return null;
+	
 
 	
 	
+	
+		return null;
 	}
-	}	
+}
 		
 		
 		
