@@ -27,6 +27,7 @@ public class DrawingTUI {
 				
 				Cercle ca ;
 			ca=  (Cercle) c.creation(position[1], contenucmd[0], 0);
+			
 			forme = ca ;
 			}
 			

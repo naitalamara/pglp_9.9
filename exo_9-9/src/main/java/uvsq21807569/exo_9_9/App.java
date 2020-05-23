@@ -15,11 +15,11 @@ public class App
     	String cmd4 = "Re1=rectangle((6,6),3,6)";
     	String[] separEgal = null;
     	
-    	separEgal=cmd4.split("rectangle");
+    	separEgal=cmd.split("cercle");
     	
     	separEgal=separEgal[1].split("[, ( ) ]");	
     	System.out.println(	"taille " +separEgal.length);
-    	System.out.println(cmd.indexOf("="));
+    	//System.out.println(cmd.indexOf("="));
     	for(String a :separEgal) {
     		System.out.println(a);
     		
