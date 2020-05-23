@@ -9,15 +9,20 @@ public class testDrawing {
 
 	
 	String ca =  "Ce1 = cercle((1,1),3)" ;
-	
 	String cmd2 ="Ce2 = cercle((4,6),90)" ;
 	Forme cer =null ;
 	Cercle c2, c3 ; 
+	Triangle tr1 ;
 	Forme cer2 = null ;
 	
 	
+	
+	String cmd3= "trr=triangle((2,2),(0,0),(7,5))";
+	
+	
 	@Test
-	public void test() {
+	public void testCreationCercle() {
+		System.out.println("********test creation d cercle");
 		DrawingTUI c =new DrawingTUI()  ;
 		cer =(Forme) c.nextCommand(ca);
 		DAO<Cercle> daoc =DaoFactory.getCercleDAO();
@@ -33,5 +38,8 @@ public class testDrawing {
 		assertEquals(c2.getCentre().getY() ,6);
 		
 	}
+	
+
+	
 
 }

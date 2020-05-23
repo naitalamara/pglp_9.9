@@ -31,6 +31,20 @@ public class DrawingTUI {
 			forme = ca ;
 			}
 			
+		}else if(contenucmd[1].contains("triangle") ) {
+			position=contenucmd[1].split("triangle");
+			if(position.length != 0) {
+				Triangle ca ;
+				
+			ca=(Triangle) c.creation(position[1], contenucmd[0], 1);
+			forme = ca ;
+			}
+
+			
+			
+			
+			
+			
 			
 			
 			}

@@ -15,7 +15,7 @@ public class App
     	String cmd4 = "Re1=rectangle((6,6),3,6)";
     	String[] separEgal = null;
     	
-    	separEgal=cmd.split("cercle");
+    	separEgal=cmd2.split("triangle");
     	
     	separEgal=separEgal[1].split("[, ( ) ]");	
     	System.out.println(	"taille " +separEgal.length);
