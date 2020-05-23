@@ -69,5 +69,22 @@ public class testDrawing {
 		
 		
 	}
-	
+	@Test
+	public void testCreationRectangle() {
+		System.out.println("********test creation d Rectangle*****************");
+		DrawingTUI c =new DrawingTUI()  ;
+		cer =(Forme) c.nextCommand(cmd5);
+		DAO<Rectangle> daoc =DaoFactory.getRectangleDAO();
+		rec=daoc.read("recc");
+		assertEquals(rec.getP().getX(),2);
+		assertEquals(rec.getP().getY(),3);
+		assertEquals(rec.getLongueur(),7);
+		assertEquals(rec.getLargeur(),6);
+		
+		
+		
+		
+		
+	}
+
 }
