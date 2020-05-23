@@ -22,7 +22,7 @@ public class testDrawing {
 	
 	@Test
 	public void testCreationCercle() {
-		System.out.println("********test creation d cercle");
+		System.out.println("********test creation d cercle************");
 		DrawingTUI c =new DrawingTUI()  ;
 		cer =(Forme) c.nextCommand(ca);
 		DAO<Cercle> daoc =DaoFactory.getCercleDAO();
@@ -38,6 +38,23 @@ public class testDrawing {
 		assertEquals(c2.getCentre().getY() ,6);
 		
 	}
+	@Test
+	public void testCreationTriangle() {
+		System.out.println("********test creation d triangle*****************");
+		DrawingTUI c =new DrawingTUI()  ;
+		cer =(Forme) c.nextCommand(cmd3);
+		DAO<Triangle> daoc =DaoFactory.getTriangleDAO();
+		tr1=daoc.read("trr");
+		assertEquals(tr1.getA().getX() , 2);
+		assertEquals(tr1.getA().getY() , 2);
+		assertEquals(tr1.getB().getX() , 0);
+		assertEquals(tr1.getB().getY() , 0);
+		assertEquals(tr1.getC().getX() , 7);
+		assertEquals(tr1.getC().getY() , 5);
+		
+		
+	}
+
 	
 
 	
