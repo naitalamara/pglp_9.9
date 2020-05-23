@@ -49,7 +49,20 @@ public class DrawingTUI {
 					forme=ca ;
 				}
 				}
+		else if (contenucmd[1].contains("rectangle") ) {
+			position=contenucmd[1].split("rectangle");
 		
+		if(position.length != 0) {
+			Rectangle ca ;
+			
+			ca=(Rectangle) c.creation(position[1], contenucmd[0], 3);
+			
+			forme=ca ;
+			
+		}
+
+	}
+	
 		if(forme != null ) {
 			
 			 new CmdCreer(forme).execute();;

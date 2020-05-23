@@ -51,17 +51,38 @@ public class InterpreteurCommandeSaisie {
 	     }else {
 				System.out.println("erreur lors de la saisie de la commande pour la creation d'un carré ");
 			}
+	     if (f != null ) return f; }
+	 else if (nombre ==3) {
+			String[] msg =position.split("[, ( ) ]" );
+		     if (msg.length ==7) {
+		    	 try {
+		    		 f= new Rectangle(nomForme,new PositonDunPoint(Integer.parseInt(msg[2]),Integer.parseInt(msg[3])),
+		    				 Integer.parseInt(msg[5]), Integer.parseInt(msg[6])	);
+		    	 }catch(Exception e ) {
+						e.getMessage();
+					}
+		     }else {
+					System.out.println("erreur lors de la saisie de la commande pour la creation d'un rectangle ");
+				}
+		     if (f != null ) return f; }
+		return f;
+	
+		
+		
+		
+		     }
 		
 		
 		
 	
 		
-	}
-		return f;
+}
+
+		
 	
 	
 
-}
-}
+
+
 
 

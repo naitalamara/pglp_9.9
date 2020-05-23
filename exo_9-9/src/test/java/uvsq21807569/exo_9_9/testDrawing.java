@@ -16,11 +16,11 @@ public class testDrawing {
 	Triangle tr1 ;
 	Forme cer2 = null ;
 	Carré car ;
-	
+	Rectangle rec ;
 	
 	String cmd3= "trr=triangle((2,2),(0,0),(7,5))";
 	String cmd4 = "Carr=carre((3,5),9)";
-	
+	String cmd5 = "recc=rectangle((2,3),7,6)";
 	
 	@Test
 	public void testCreationCercle() {
@@ -53,9 +53,8 @@ public class testDrawing {
 		assertEquals(tr1.getB().getY() , 0);
 		assertEquals(tr1.getC().getX() , 7);
 		assertEquals(tr1.getC().getY() , 5);
-		
-		
-	}
+
+}
 	@Test
 	public void testCreationCarré() {
 		System.out.println("********test creation d Carree*****************");
@@ -71,7 +70,4 @@ public class testDrawing {
 		
 	}
 	
-
-	
-
 }
