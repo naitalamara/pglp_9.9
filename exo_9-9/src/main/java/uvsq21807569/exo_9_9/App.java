@@ -14,12 +14,13 @@ public class App
     	String cmd3 = "Ca1=carre((1,2),3)";
     	String cmd4 = "Re1=rectangle((6,6),3,6)";
     	String cmd5="move(c1,(12,4)) ";
+    	String cmd6="delete(c1) ";
     	String[] separEgal = null;
     	
-    	separEgal=cmd.split("cercle");
+    	separEgal=cmd6.split("delete");
     	System.out.println(separEgal[1]);
     	
-    	separEgal=separEgal[1].split("[, ( ) ]");	
+    	separEgal=separEgal[1].split("[ ( ) ]");	
     	System.out.println(	"taille " +separEgal.length);
     	//System.out.println(cmd.indexOf("="));
     	for(String a :separEgal) {

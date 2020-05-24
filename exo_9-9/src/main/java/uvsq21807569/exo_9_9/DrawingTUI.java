@@ -2,6 +2,7 @@ package uvsq21807569.exo_9_9;
 
 import Cmd.CmdCreer;
 import Cmd.CmdDeplacer;
+import Cmd.CmdSupprimer;
 import Cmd.Commande;
 
 public class DrawingTUI {
@@ -95,6 +96,19 @@ public class DrawingTUI {
 			System.out.println("errr de deplacmnt ");
 			return null ;
 		}
+		
+	}else if(cmd.contains("delete")) {
+		// String cmd="delete(caaa) ";
+		String[] contenucmd ;
+		contenucmd=cmd.split("delete");
+		/*contenucmd[0] =[]
+		  [1] =(caaa) 
+*/
+		forme=c.supp(contenucmd[1]);
+		
+		Commande c = new CmdSupprimer(forme);
+		c.execute();
+		return c ;
 		
 	}
 		

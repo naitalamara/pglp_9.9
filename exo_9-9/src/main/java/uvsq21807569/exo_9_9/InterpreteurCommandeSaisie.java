@@ -83,33 +83,27 @@ public class InterpreteurCommandeSaisie {
 		
 		public Forme deplacer(String cmd) {
 			
-			Forme forme=null ;
+			Forme a=null ;
 			String[] msg =cmd.split("[, ( ) ]" );  
 			if(msg.length==5) {
-				Forme a = null ;
+				
 				if(a== null) {
 					DAO<Cercle> daoc =DaoFactory.getCercleDAO();
-					forme = daoc.read(msg[1]);
-					System.out.println(msg[1]);
-					if (forme != null) {
-						a = forme;
-										}
+					a = daoc.read(msg[1]);
+				}
+				if(a== null) {
+										
 					DAO<Triangle> daoca =DaoFactory.getTriangleDAO();
-					forme=daoca.read(msg[1]);
-					if (forme != null) {
-						a = forme;
-										}
+					a=daoca.read(msg[1]);
+				}
+				if(a== null) {
 					DAO<Carré> daocar =DaoFactory.getCarreDAO();
-					forme=daocar.read(msg[1]);
-					if (forme != null) {
-						a = forme;
-										}
+					a=daocar.read(msg[1]);
+				}
+				if(a== null) {
 					DAO<Rectangle> daor =DaoFactory.getRectangleDAO();
-					forme=daor.read(msg[1]);
-					if (forme != null) {
-						a = forme;
-			
-										}
+					a=daor.read(msg[1]);
+					
 			}
 				if(a!=null){
 				
@@ -126,7 +120,43 @@ public class InterpreteurCommandeSaisie {
 	
 		
 }
-}
+		public Forme supp(String cmd ) {
+			Forme forme=null ;
+			String[] msg =cmd.split("[ ( ) ]" );  
+			if(msg.length==2) {
+				
+				if(forme == null) {
+					DAO<Cercle> daoc =DaoFactory.getCercleDAO();
+					forme = daoc.read(msg[1]);}
+					if(forme == null) {
+					
+					
+					DAO<Triangle> daoca =DaoFactory.getTriangleDAO();
+					forme=daoca.read(msg[1]);}
+					if(forme == null) {
+					DAO<Carré> daocar =DaoFactory.getCarreDAO();
+					forme=daocar.read(msg[1]);}
+					
+					if(forme == null) {
+					DAO<Rectangle> daor =DaoFactory.getRectangleDAO();
+					forme=daor.read(msg[1]);
+					
+			}
+				if(forme!=null){
+				
+					return forme ;
+					
+			
+				}
+			}
+			return null;}}
+		
+
+
+			
+		
+
+
 
 		
 	
