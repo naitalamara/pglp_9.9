@@ -6,7 +6,7 @@ import Cmd.CmdSupprimer;
 import Cmd.Commande;
 
 public class DrawingTUI {
-	InterpreteurCommandeSaisie c  = new InterpreteurCommandeSaisie(); ; 
+	InterpreteurCommandeSaisie c  = new InterpreteurCommandeSaisie(); 
 	
 	
 	
@@ -119,6 +119,38 @@ public class DrawingTUI {
 	
 	
 		return null;
+	}
+	
+	public void affichage(String cmd ) {
+		if(cmd.contains("afficher")){
+			Forme forme =null ;
+			String []msg =cmd.split("afficher");
+			String[] msg2 =msg[1].split("[ ( ) ]" );  
+			
+			if(forme==null) {
+				DAO<Cercle> daoc =DaoFactory.getCercleDAO();
+				System.out.println(msg2[1]);
+				forme = daoc.read(msg2[1]);}
+				if(forme == null) {
+				DAO<Triangle> daoca =DaoFactory.getTriangleDAO();
+				forme=daoca.read(msg2[1]);}
+				if(forme == null) {
+				DAO<Carré> daocar =DaoFactory.getCarreDAO();
+				forme=daocar.read(msg2[1]);}
+				
+				if(forme == null) {
+				DAO<Rectangle> daor =DaoFactory.getRectangleDAO();
+				forme=daor.read(msg2[1]);
+				}
+				
+				if(forme!=null) {
+					forme.afficher();
+				}else {
+					System.out.println("la forme que vous voulez afficher n'existe pas ");
+				}
+				
+		}
+			
 	}
 }
 		
