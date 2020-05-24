@@ -19,8 +19,8 @@ public class Carré extends Forme {
 
 	@Override
 	public void deplacer(String nom, int dx, int dy) {
-		p.setX(p.getX()+dx);
-		p.setY(p.getY()+dy);
+		this.p.setX(this.p.getX() + dx);
+		this.p.setY(this.p.getY() + dy);
 		
 	}
 

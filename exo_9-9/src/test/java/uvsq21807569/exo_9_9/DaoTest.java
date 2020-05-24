@@ -14,7 +14,7 @@ import Exception.TableExisteDeja;
 
 public class DaoTest {
 	Triangle triangle ;
-	Carré carre ;
+	Carré carre, c ;
 	Cercle cercle ;
 	Rectangle rectangle ,rec;
 	Groupe grp ;
@@ -25,6 +25,7 @@ public class DaoTest {
 		cercle=new Cercle("cercle",new PositonDunPoint(0,0),2);
 		triangle=new Triangle("triangle",new PositonDunPoint(0,0),new PositonDunPoint(-2,2),new PositonDunPoint(2,2));
 		carre=new Carré("carre",new PositonDunPoint(3,3),5);
+		c=new Carré("carre",new PositonDunPoint(1,4),5);
 		rectangle =new Rectangle("rectangle",new PositonDunPoint(3,1),4,1);
 		rec =new Rectangle("rec",new PositonDunPoint(5,1),9,2);
 		grp=new Groupe("grp");
@@ -48,6 +49,8 @@ public class DaoTest {
 		assertEquals(c2.getNom(), cercle.getNom());
 		assertEquals(c2.getCentre(),cercle.getCentre());
 		assertEquals(c2.getRayon(),cercle.getRayon());
+		
+	
 	
 	}
 	@Test
@@ -70,7 +73,8 @@ public class DaoTest {
 		assertEquals(carre2.getNom(),carre.getNom());
 		assertEquals(carre2.getLongueur(),carre.getLongueur());
 		assertEquals(carre2.getP(),carre.getP());
-		
+		c=daoca.update(carre2);
+		System.out.println(c.getP());
 		}
 	
 	@Test

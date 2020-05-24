@@ -13,9 +13,11 @@ public class App
     	String cmd2 = "Tr1=triangle((1,1),(3,3),(4,4))";
     	String cmd3 = "Ca1=carre((1,2),3)";
     	String cmd4 = "Re1=rectangle((6,6),3,6)";
+    	String cmd5="move(c1,(12,4)) ";
     	String[] separEgal = null;
     	
-    	separEgal=cmd4.split("rectangle");
+    	separEgal=cmd.split("cercle");
+    	System.out.println(separEgal[1]);
     	
     	separEgal=separEgal[1].split("[, ( ) ]");	
     	System.out.println(	"taille " +separEgal.length);

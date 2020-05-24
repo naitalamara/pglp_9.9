@@ -23,6 +23,7 @@ Forme f ;
 			DAO<Cercle> c =new DaoFactory().getCercleDAO();
 			c.update((Cercle) f);
 		}else if(f instanceof Carré) {
+			System.out.println("");
 			DAO<Carré> car =new DaoFactory().getCarreDAO();
 			car.update((Carré) f);
 		

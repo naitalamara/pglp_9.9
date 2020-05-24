@@ -74,6 +74,7 @@ public class CarreJdbc implements DAO<Carré>{
 			int res = pre.executeUpdate();
 			
 			assert res == 1;
+			
 		}
 		}
 		catch (SQLException e) {

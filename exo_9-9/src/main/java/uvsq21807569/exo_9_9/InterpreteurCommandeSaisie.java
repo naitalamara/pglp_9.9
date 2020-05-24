@@ -1,15 +1,24 @@
 package uvsq21807569.exo_9_9;
 
+import Cmd.CmdDeplacer;
+import Cmd.Commande;
+
 public class InterpreteurCommandeSaisie {
 	public Forme creation(final String position ,String nomForme , int nombre ) {
 	Forme f= null ; ;
 		if(nombre== 0) {
-			
+			//position =((1,6),2)
 			String[] msg =position.split("[, ( ) ]" );
+		/*	msg [0 ]=[]
+				[1]=[]
+				[2]=1
+				[3]=6
+				[4]=[]
+				[5]=2	*/	
 			if (msg.length==6) {
 				
 				try {
-					f= new Cercle(nomForme,new PositonDunPoint(Integer.parseInt(msg[2]),	Integer.parseInt(msg[3])),
+					f= new Cercle(nomForme,new PositonDunPoint(Integer.parseInt(msg[2]),Integer.parseInt(msg[3])),
 							Integer.parseInt(msg[5]));
 					
 				}catch(Exception e ) {
@@ -72,10 +81,51 @@ public class InterpreteurCommandeSaisie {
 		
 		     }
 		
-		
+		public Forme deplacer(String cmd) {
+			
+			Forme forme=null ;
+			String[] msg =cmd.split("[, ( ) ]" );  
+			if(msg.length==5) {
+				Forme a = null ;
+				if(a== null) {
+					DAO<Cercle> daoc =DaoFactory.getCercleDAO();
+					forme = daoc.read(msg[1]);
+					System.out.println(msg[1]);
+					if (forme != null) {
+						a = forme;
+										}
+					DAO<Triangle> daoca =DaoFactory.getTriangleDAO();
+					forme=daoca.read(msg[1]);
+					if (forme != null) {
+						a = forme;
+										}
+					DAO<Carré> daocar =DaoFactory.getCarreDAO();
+					forme=daocar.read(msg[1]);
+					if (forme != null) {
+						a = forme;
+										}
+					DAO<Rectangle> daor =DaoFactory.getRectangleDAO();
+					forme=daor.read(msg[1]);
+					if (forme != null) {
+						a = forme;
+			
+										}
+			}
+				if(a!=null){
+				
+					a.deplacer(msg[1], Integer.parseInt(msg[3]),Integer.parseInt(msg[4]));
+					
+					System.out.println("a jours");
+					return a;
+			}
+			
+				
+		}
+			return null;
 		
 	
 		
+}
 }
 
 		

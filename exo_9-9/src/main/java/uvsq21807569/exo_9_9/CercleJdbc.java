@@ -76,7 +76,7 @@ public class CercleJdbc implements DAO<Cercle> {
 			pre.setInt(3, obj.getRayon());
 			pre.setString(4, obj.getNom());
 			int res = pre.executeUpdate();
-			
+		
 			assert res == 1;
 		}
 		}
